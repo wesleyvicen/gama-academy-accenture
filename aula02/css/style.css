@@ -95,7 +95,7 @@ footer{
 
 .content-space--default {
     padding: 20px;
-    margin: 2;
+    margin: 2px;
     border-radius: 5px;
 }
 
@@ -143,6 +143,7 @@ i:hover{
     height: 40px;
     text-align: center;
     transition: 1s;
+    justify-content: space-around;
 
 }
 .content-top--button:hover{
@@ -189,4 +190,60 @@ i{
 .bg-color--blue {
     background-color: #005eff;
     color: #fff;
+}
+
+/* Media query */
+@media only screen and (max-width: 480px ) {
+    .content-flex {
+        display: grid;
+
+    }
+    .flex-wrap{
+        width: 100%;
+    }
+    .content-flex--direction {
+        flex-direction: column;
+    }
+    .content-left--main{
+        position: fixed;
+        top: 90%;
+        padding: 15px 15px 5px 5px;
+        width: 250px;
+        height: 60px;
+        border-radius: 16px 16px 0px 0px;
+        display: flex;
+        z-index: 3;
+        box-shadow: 16px 7px 16px -12px rgba(0, 0, 0, 0.701);
+        background: #9000c5;
+        justify-content: space-around;
+        
+    }
+    .content-top--button{
+        bottom: 80px;
+    }
+    .content-top--button:hover {
+        font-size: 40px;
+    }
+    .container{
+        max-width: 100%;
+    }
+    
+}
+
+@media only screen and (min-width: 600px ) {
+    .bg-color--blue {
+        background-color: #435740;
+        color: #ffff00
+    }
+
+}
+
+@media only screen and (min-width: 1382px ) {
+        .container{
+            max-width: 60%;
+        }
+        .bg-color--purple {
+            background-color: #FFA500;
+            color: #000
+        }
 }
