@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'roboto', sans-serif;
+    font-weight: 700;
+}
+
+h4, h5, h6 {
+    font-family: 'roboto', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'roboto' sans-serif;
+    font-weight: 300;
+}
+
+footer{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.container-parallax {
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    background-attachment: fixed!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+
+.content-parallax--data {
+    text-align: center;
+    color: #fff;
+    flex-direction: column;
+    justify-content: center;
+}
+.content-flex-grid {
+    display: grid;
+}
+.content-flex--direction {
+    flex-direction: row;
+}
+.flex-item--1 {
+    flex: 1;
+    margin: 2px;
+}
+.flex-item--2 {
+    flex: 2;
+    margin: 2px;
+}
+.content-default {
+    padding: 20px;
+}
+.content-flex {
+    display: flex;
+}
+
+.left{
+    height: 50vh
+}
+
+.p20{
+    padding: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.bg-img--version--1 {
+    background: url('https://www.bykamy.com.br/media/magpleasure/mpblog/upload/5/7/57b1bf7d80506c13b5a9d9ad3aaf491c.jpg');
+}
+.bg-img--version--2 {
+    background: url('https://ohlaladani.com.br/wp-content/uploads/wallpaper-OHLALADANI_DESKTOP_WALLPAPERS_AVENTURA-2.jpg');
+}
+.bg-img--version--3 {
+    background: url('https://heloisatolipan.com.br/imagens/2020/05/20200529-gabrielwickbold_iamlight-15-2.jpg');
+}
+
+.bg-color--purple {
+    background-color: #9000c5;
+    color: #fff;
+}

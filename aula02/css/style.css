@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'roboto', sans-serif;
+    font-weight: 700;
+}
+
+h4, h5, h6 {
+    font-family: 'roboto', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'roboto' sans-serif;
+    font-weight: 300;
+}
+
+footer{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.container-parallax {
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    background-attachment: fixed!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+.content-parallax--data {
+    text-align: center;
+    color: #fff;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg-img--version--1 {
+    background: url('https://www.bykamy.com.br/media/magpleasure/mpblog/upload/5/7/57b1bf7d80506c13b5a9d9ad3aaf491c.jpg');
+}
+.bg-img--version--2 {
+    background: url('https://piramidal.pt/wp-content/uploads/2019/04/ff72560c-b6c3-4589-af50-179edb734392.jpeg');
+}
+.bg-img--version--3 {
+    background: url('https://heloisatolipan.com.br/imagens/2020/05/20200529-gabrielwickbold_iamlight-15-2.jpg');
+}
+
+.container-header {
+    text-align: center;
+}
+
+.content-default {
+    padding: 20px;
+}
+
+.content-flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex: 1;
+    margin: 2px;
+    width: 33%;
+    justify-content: center;
+}
+
+.content-flex-grid {
+    display: grid;
+}
+
+.content-flex--direction {
+    flex-direction: row;
+}
+
+.content-flex--reverse{
+    flex-direction: row-reverse;
+}
+
+.content-space--default {
+    padding: 20px;
+    margin: 2;
+    border-radius: 5px;
+}
+
+.content-justify {
+    justify-content: center;
+}
+
+.content-justify--bt {
+    justify-content: space-around;
+}
+
+.content-align {
+    align-items: flex-start;
+}
+
+.content-left--main{
+    position: fixed;
+    left: 0px;
+    top: 30%;
+    padding: 15px 5px 5px 15px;
+    width: 60px;
+    height: 250px;
+    border-radius: 0px 16px 16px 0px;
+    display: grid;
+    z-index: 3;
+    box-shadow: 16px 7px 16px -12px rgba(0, 0, 0, 0.701);
+
+    background: #9000c5;
+}
+.content-left--main:hover{
+    padding: 15px 40px 40px 15px;
+}
+i:hover{
+    font-size: 80px;
+}
+
+.content-top--button{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fb00ca;
+    border-radius: 100px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    transition: 1s;
+
+}
+.content-top--button:hover{
+background-color: #9000c5;
+transition: 1s;
+}
+i{
+    font-size: 40px;
+    color: #fff;
+}
+
+
+.flex-item--1 {
+    flex: 1;
+    margin: 2px;
+}
+.flex-item--2 {
+    flex: 2;
+    margin: 2px;
+}
+.flex-item--3 {
+    flex: 3;
+    margin: 2px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+.bg-color--purple {
+    background-color: #9000c5;
+    color: #fff;
+}
+.bg-color--yellow {
+    background-color: #ffff00;
+    color: #005eff;
+}
+.bg-color--pink {
+    background-color: #fb00ca;
+    color: #fff;
+}
+.bg-color--blue {
+    background-color: #005eff;
+    color: #fff;
+}
