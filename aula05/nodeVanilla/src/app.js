@@ -1,23 +1,43 @@
+import Nav from './views/components/Nav.js';
+import Footer from './views/components/Footer.js';
 
-    var form = document.getElementById('form')
-     var email = document.getElementById('email')
-     var pass = document.getElementById('senha')
+import Home from './views/pages/Home.js';
+import Dash from './views/pages/Dash.js';
+import Login from './views/pages/Login.js';
+import SignUp from './views//pages/SignUp.js';
+import Error404 from './views//pages/Error404.js';
 
-     verName = localStorage
-     localStorage.setItem("name", "teste@teste.com")
-     localStorage.setItem("pass", "123")
+import Utils from './service/Utils.js';
 
-     form.addEventListener('submit', function(e) {
-        e.preventDefault();
+let routes = { 
+    '/': Home,
+    '/signup': SignUp,
+    '/login': Login,
+    '/dashboard': Dash,
+}
 
-        emailv = localStorage.getItem("name")
-        passv = localStorage.getItem("pass")
-                      if(email.value == emailv && pass.value == passv){
+const router = async () => {
 
-                          window.location.href = "/dashboard.html"
-                      }
-                      else{
-                          alert("Usuário e ou senha está errado!")
-                      }
-                      
-     })
+    const header = null || document.getElementById('header')
+    const content = null || document.getElementById('container')
+    const footer = null || document.getElementById('footer')
+    
+    //content.innerHTML = Home.render();
+    header.innerHTML = await Nav.render();
+    await Nav.after_render();
+    footer.innerHTML = await Footer.render();
+    await Footer.after_render();
+
+    let request = Utils.parseRequestURL();
+    let parseURL = (request.resource ? '/' + request.resource: '/') + (request.verb ? '/' + request.verb : '');
+    
+    let page = routes[parseURL] ? routes[parseURL] : Error404
+    content.innerHTML = await page.render();
+    await page.after_render();
+}
+
+// Observar as mudanças na URL
+window.addEventListener('hashchange', router)
+window.addEventListener('load', router)
+
+//
