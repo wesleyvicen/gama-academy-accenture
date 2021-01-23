@@ -96,7 +96,7 @@ let SignUp = {
                 senha: passwordVal
             }, {
                 headers: {
-                    'Content-Type': 'applications/json'
+                    'Content-type': 'applications/json'
                 }
             })
             .then( res => {

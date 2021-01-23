@@ -1,3 +1,3 @@
-const baseURL = 'http://accenture-java-desafio.herokuapp.com/'
+const baseURL = 'https://accenture-java-desafio.herokuapp.com/'
 
 export default baseURL;
