@@ -1,31 +1,44 @@
 let Nav = {
     render : async () => {
+      let IsAuth = localStorage.getItem('@token')
+      let userData = IsAuth ? JSON.parse(localStorage.getItem('userDataAccount')) : ''
+      const {conta} = userData
         let view = `
         <header class="align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container m-auto" width="100%">
-              <a class="navbar-brand" href="#">
-                  <img src="img/bootstrap-5.svg" class="img-fluid" width="200px" alt="">
-              </a>
-              <button class="navbar-toggler" type="button">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" class="img-fluid" width="200px" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Home</a>
                   </li>
+                  ${!IsAuth?(`
                   <li class="nav-item">
-                    <a class="nav-link" href="#/login">Entrar</a>
+                      <a class="nav-link" href="#/login">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#/signup">Cadastrar-se</a>
+                      <a class="nav-link" href="#/signup">SignUp</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Desabilitado</a>
-                  </li>
-                </ul>
-                <div class="d-flex"> <button id="destroy_session" class="btn btn-secondary" ">Sair</button></div>
+                  </ul>
+                  `):''}
+                  ${IsAuth?(`
+                  </ul>
+                  <div class="d-flex flex-row-reverse bd-highlight">
+                  
+                  <div class="p-2 bd-highlight"> <button id="destroy_session" class="btn btn-secondary" ">Sair</button></div>
+                  <div class="p-3 bd-highlight">
+                    <p>Saldo: R$${conta.saldo}</p>
+                  </div>
+                  </div>
+                  `):''}
+                
+                
               </div>
             </div>
           </nav>
@@ -35,11 +48,14 @@ let Nav = {
         return view;
     },
     after_render : async () => {
-
+      let IsAuth = localStorage.getItem('@token')
+      if(IsAuth){
       document.getElementById('destroy_session').addEventListener('click', function(){
         localStorage.clear()
         window.location.replace('#/login')
       })
+    }
+      
     }
 }
 
