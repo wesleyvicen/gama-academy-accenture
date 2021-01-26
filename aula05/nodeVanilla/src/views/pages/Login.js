@@ -1,6 +1,9 @@
 import baseURL from '../../../service/baseURL.js';
+import auth from '../../service/IsAuth.js'
+
 let Login = {
     render : async () => {
+        let IsAuth = await auth(true, 'dashboard');
         let view = `
         <div class="container">
         <div class="row mt-5 mb-5">
@@ -16,19 +19,19 @@ let Login = {
                     <h2 class="mt-5 mb-4 text-center">Informe aqui seu usuário e senha</h2>
                     <form class="p-5">
                         <div class="form-group">
-                            <label for="email">Seu Email</label>
-                            <input type="email" class="form-control mb-4" id="email">
+                            <label for="usuario">Seu Email</label>
+                            <input type="text" class="form-control mb-4" id="usuario">
                             <small class="form-text text-muted">Adicione aqui seu email.</small>
                         </div>
                         <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" class="form-control mb-4" id="password">
+                            <label for="senha">Senha</label>
+                            <input type="password" class="form-control mb-4" id="senha">
                         </div>
                         <div class="form-group form-check mb-4">
                             <input type="checkbox" class="form-check-input" id="manter">
                             <label class="form-check-label" for="manter">Me mantenha conectado</label>
                           </div>
-                          <button id="submit_login" class="btn btn-primary" ">Logar-se</button
+                          <button id="submit_login" class="btn btn-primary" ">Logar-se</button>
                     </form>
                 </div>
             </div>
@@ -38,23 +41,34 @@ let Login = {
 
         return view;
     },
-    after_render : async () => {
+    after_render :async () => {
         document.getElementById('submit_login').addEventListener('click', () => {
-            let emailVal = document.getElementById('email').value,
-            passwordVal = document.getElementById('password').value
-               console.log("Tudo certo")
-               axios.post(baseURL, {
-                   username: emailVal,
-                   password: passwordVal
-               }).then(res => {
-                   console.log(res.data)
-                   localStorage.setItem('@token', res.data.token)
-                   sessionStorage.setItem('@token', res.data.token)
-                   Cookies.set('@token', res.data.token, {expires: 1})
-               })
-           
-         })
-    }
+           let usuario = document.getElementById('usuario').value,
+           senha = document.getElementById('senha').value
+
+           if( usuario.length >= 4 && senha.length >= 4 ){
+
+            axios.post(`${baseURL}login`, {
+                usuario: usuario,
+                senha: senha
+            }, {
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            .then( res => {
+                if ( res.status === 200 ){
+                    window.location.replace('#/dashboard')
+                    localStorage.setItem('@token', res.data.token)
+                    localStorage.setItem('userDataAccount', JSON.stringify(res.data))
+                }
+            })
+
+        } else {
+            alert('confira sua senha!')
+        }
+    })
+}
 }
 
 export default Login;

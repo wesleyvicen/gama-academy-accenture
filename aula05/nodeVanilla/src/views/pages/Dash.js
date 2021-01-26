@@ -1,8 +1,18 @@
+import IsAuthenticated from '../../service/IsAuth.js';
+import auth from '../../service/IsAuth.js'
+
 let Dash = {
     render : async () => {
+      let IsAuth = await auth(false, 'login');
+
+      let userData = JSON.parse(localStorage.getItem('userDataAccount'))
+      const {usuario, conta} = userData
+
         let view = `
         <div class="container p-5">
         <div class="row">
+        <h1>Olá, ${usuario.nome}</h1>
+        <p>Atualmente você tem em conta: R$ ${conta.saldo}</p>
           <div class="col-md-4 text-center d-flex align-items-center">
             <div class="card" style="width: 18rem;">
               <img src="https://1.bp.blogspot.com/-OpEzuBdYmak/XDt9bne9pqI/AAAAAAAAbBc/tEbos8RCNtofucGiLttYiOL-7wLuiu0CgCLcBGAs/s640/POST_MAT%25C3%2589RIA.jpg" class="card-img-top" alt="...">

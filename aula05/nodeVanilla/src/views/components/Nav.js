@@ -25,6 +25,7 @@ let Nav = {
                     <a class="nav-link disabled" href="#">Desabilitado</a>
                   </li>
                 </ul>
+                <div class="d-flex"> <button id="destroy_session" class="btn btn-secondary" ">Sair</button></div>
               </div>
             </div>
           </nav>
@@ -33,7 +34,13 @@ let Nav = {
 
         return view;
     },
-    after_render : async () => {}
+    after_render : async () => {
+
+      document.getElementById('destroy_session').addEventListener('click', function(){
+        localStorage.clear()
+        window.location.replace('#/login')
+      })
+    }
 }
 
 export default Nav;
