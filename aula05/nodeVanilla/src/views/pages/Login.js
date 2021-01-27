@@ -31,7 +31,7 @@ let Login = {
                             <input type="checkbox" class="form-check-input" id="manter">
                             <label class="form-check-label" for="manter">Me mantenha conectado</label>
                           </div>
-                          <button id="submit_login" class="btn btn-primary" ">Logar-se</button>
+                          <button type="button" id="submit_login" class="btn btn-primary">Logar-se</button>
                     </form>
                 </div>
             </div>
@@ -47,22 +47,30 @@ let Login = {
            senha = document.getElementById('senha').value
 
            if( usuario.length >= 4 && senha.length >= 4 ){
-
             axios.post(`${baseURL}login`, {
                 usuario: usuario,
                 senha: senha
-            }, {
-                headers: {
-                    "Content-type": "application/json"
-                }
-            })
-            .then( res => {
-                if ( res.status === 200 ){
+            }).then( res => {
+                if (res.status == 200 ){
                     window.location.replace('#/dashboard')
                     localStorage.setItem('@token', res.data.token)
                     localStorage.setItem('userDataAccount', JSON.stringify(res.data))
                 }
+                
+
+            }).catch( function(err){
+                let res = err.response
+                let message = res.data.error
+                console.log('Erro: ', err)
+                console.log('Response: ', res)
+                console.log('Response.data: ', res.data)
+                alert(`
+                        Não foi possível realizar o login:
+                        -> ${message}
+
+                        Verifique os dados e tente novamente.`)
             })
+
 
         } else {
             alert('confira sua senha!')
