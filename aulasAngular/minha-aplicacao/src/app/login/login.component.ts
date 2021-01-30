@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { LoginResponse } from './login.interfaces';
 import { LoginService } from './login.service';
 
 @Component({
@@ -43,18 +44,19 @@ export class LoginComponent {
     return form.controls[nomeControle].invalid && form.controls[nomeControle].touched;
   }
 
-  login(){
-
+  login() {
     const credenciais = {
       usuario: this.usuario,
       senha: this.senha
-    }
-
+    };
     this.LoginService.logar(credenciais)
-    .subscribe(response => this.onSucessLogin(response), error => this.onErrorLogin(error))
+      .subscribe(
+        response => this.onSuccessLogin(response),
+        error => this.onErrorLogin(error)
+      );
   }
 
-  onSucessLogin(response: any){
+  onSuccessLogin(response: LoginResponse) {
     console.log("Sucesso", response)
   }
   onErrorLogin(error: any){
