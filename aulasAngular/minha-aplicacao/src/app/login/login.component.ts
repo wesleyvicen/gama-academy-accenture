@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginResponse } from './login.interfaces';
 import { LoginService } from './login.service';
@@ -17,8 +18,12 @@ export class LoginComponent {
   usuario = ''
   senha = ''
 
-  constructor(private LoginService: LoginService) { }
+  estaCarregando: boolean = false;
+  erorNoLogin: boolean = false;
+
+  constructor(private LoginService: LoginService, private route: Router) { }
   onSubmit(form: NgForm) {
+    this.erorNoLogin = false;
     if (!form.valid) {
       form.controls.usuario.markAsTouched();
       form.controls.senha.markAsTouched();
@@ -45,6 +50,7 @@ export class LoginComponent {
   }
 
   login() {
+    this.estaCarregando = true;
     const credenciais = {
       usuario: this.usuario,
       senha: this.senha
@@ -57,10 +63,13 @@ export class LoginComponent {
   }
 
   onSuccessLogin(response: LoginResponse) {
-    console.log("Sucesso", response)
+
+    this.route.navigate(['home'])
   }
   onErrorLogin(error: any){
      console.log("Erro", error)
+     this.erorNoLogin = true;
+     this.estaCarregando = false;
   }
 
 }

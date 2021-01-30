@@ -18,8 +18,14 @@
         Senha invalida
       </div>
     </div>
+
+    <div *ngIf = "erorNoLogin">
+      Usuário e ou senha está invalido!
+    </div>
+    <div *ngIf="estaCarregando">Carregando...</div>
     <button type="submit" class="btn btn-primary mt-3" (click) ="onSubmit(form)">Entrar</button>
+
+
+
   </form>
 </div>
-
-{{form.valid}}
