@@ -1,0 +1,18 @@
+<p>exercicio-pipes works!</p>
+
+
+<h2>Valor monetario {{valorMonetario | currency: 'BRL'}}</h2>
+
+
+<h2>data: {{data | date: 'short'}}</h2>
+
+<ul>
+  <li *ngFor="let compra of compras" >
+    <p>Produto: <b>{{compra.produto | uppercase}}</b></p>
+    <p>Valor: {{compra.valor | currency}}</p>
+    <P>Quantidade: {{compra.quantidade}}</P>
+    <p>Peso: {{compra.peso > 0 ? (compra.peso | number: '1.1-2')! + ' Kg' : 'Sem Peso'}}</p>
+    <p>Data: {{compra.data  | date: "EEEE, dd 'de'  MMMM 'de' yyyy, 'ás' HH:mm"}}</p>
+    <hr>
+  </li>
+</ul>
