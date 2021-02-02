@@ -3,7 +3,7 @@
   <h1> Seja bem-vindo ao Bankline!</h1>
   <form class="form-signin" #form="ngForm">
     <div class="form-group mt-3">
-      <input autocomplete="cpf" type="text" class="form-control" placeholder="cpf"
+      <input autocomplete="cpf" type="text" class="form-control" placeholder="cpf" minlength="11"
        [(ngModel)] = "cpf" name ="cpf" required
        [class.is-invalid]="exibeErro('cpf',form)" #cpfInput
        >
